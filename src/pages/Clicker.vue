@@ -1,33 +1,29 @@
 <template>
-  <div class="row">
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      <p class="text-center">Hits {{ cookies }}</p>
-      <div class="BONG">
-            <img class="img-fluid" @click.prevent="playSound('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3')" src="../assets/gong.jpg" @click="cookies++" >
-        </div>
-      
-    </div>
-    <button v-for="(upgrade, name) in upgrades"
-        class="btn btn-outline-primary py-3" 
-        @click.prevent="playSound('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3')"
-        :disabled="cookies<upgrade.price"
-        @click="buyUpgrade(upgrade)">
-        Buy {{ name }} for 
-        {{ upgrade.price }} hits ({{upgrade.cps}} hits per second)
-        {{ upgrade.count }}
-    </button>
+  <div class="container">
+    <ul class="row">
+      <ul class="col">
+        <p class="text-center">Hits {{ cookies }}</p>
+        <img class="img-fluid" @click.prevent="playSound('../assets/gong.m4a')" src="../assets/gong.png" @click="cookies++" >
+      </ul>
+
+      <div class="col"> 
+        <button v-for="(upgrade, name) in upgrades"
+          class="btn btn-outline-primary py-3" 
+          @click.prevent="playSound('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3')"
+          :disabled="cookies<upgrade.price"
+          @click="buyUpgrade(upgrade)">
+          Buy {{ name }} for 
+          {{ upgrade.price }} hits ({{upgrade.cps}} hits per second)
+          {{ upgrade.count }}
+        </button>
+      </div>
+    </ul>
   </div>
+    
 </template>
 
 <script>
-  import Gong from '../components/gong.vue'; import Upgrades from '../components/Upgrades.vue';
-          export default {
-          components: {
-          Gong,
-          Upgrades,
+    export default {
     created(){
         setInterval(()=> {
             for(const upgrade in this.upgrades){
@@ -59,5 +55,21 @@
             }
         }
     }
-}};
+};
+
+new Vue(sound,{
+    el: '#root',
+    data: {
+        text: ''
+    },
+    methods: {
+        playSound (sound) {
+        if(sound) {
+            var audio = new Audio(sound);
+            audio.play();
+        }
+        }
+    }
+});
+
 </script>

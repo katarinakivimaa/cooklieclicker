@@ -1,6 +1,7 @@
 import './style.scss';
 
 import * as bootstrap from 'bootstrap';
+import 'bootstrap';
 import { createApp } from 'vue';
 import * as VueRouter from 'vue-router';
 
@@ -25,3 +26,13 @@ const app = createApp(App);
 app.use(router);
 app.mount('#app');
 
+
+new Vue({
+    el: '#root',
+    mounted () {
+       console.log('Will it play here?? lol')
+       var audio = new Audio('./assets/music.m4a')
+       audio.play()
+    }, 
+    render: h => h(App)
+})

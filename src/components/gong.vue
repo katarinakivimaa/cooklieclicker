@@ -1,23 +1,12 @@
 <template>
     <ul>
         <div class="BONG">
-            <img src="../assets/gong.jpg" @click.prevent="playSound('../assets/gong.m4a')"  @click="cookies++" >
+            <img id="BONG" @click.prevent="playSound('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3')" src="../assets/gong.jpg" @click="cookies++" >
         </div>
     </ul>
 </template>
 <script>
-    new Vue(Sound,{
-    el: '#BONG',
-    data: {
-        text: 'BONG'
-    },
-    methods: {
-        playSound (sound) {
-        if(sound) {
-            var audio = new Audio(sound);
-            audio.play();
-        }
-        }
+    export default {
+
     }
-    });
 </script>

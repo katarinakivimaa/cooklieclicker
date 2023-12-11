@@ -1,7 +1,8 @@
 
 <template>
     <button v-for="(upgrade, name) in upgrades"
-        class="btn btn-outline-primary py-3"
+        class="btn btn-outline-primary py-3" 
+        @click.prevent="playSound('http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3')"
         :disabled="cookies<upgrade.price"
         @click="buyUpgrade(upgrade)">
         Buy {{ name }} for 

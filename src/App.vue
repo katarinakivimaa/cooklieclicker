@@ -10,4 +10,5 @@ export default {
         Tabs
     }
 };
+
 </script>

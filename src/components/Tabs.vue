@@ -12,6 +12,12 @@
     </ul>
 </template>
 
+<style>
+.nav {
+    background-color: bisque;
+}
+</style>
+
 <script>
 export default {
 

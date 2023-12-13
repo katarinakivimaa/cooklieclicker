@@ -43,12 +43,7 @@ export default {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/i,
-                loader: 'file-loader'
-            }  
-            
+            }
         ]
     },
     plugins: [
@@ -60,9 +55,9 @@ export default {
             template: './src/index.html'
         }),
         new MiniCssExtractPlugin(),
-        new PurgeCSSPlugin({
-            paths: glob.sync(`src/views/**/*`, { nodir: true }),
-        }),
+        // new PurgeCSSPlugin({
+        //     paths: glob.sync(`src/views/**/*`, { nodir: true }),
+        // }),
         new VueLoaderPlugin()
     ],
 }

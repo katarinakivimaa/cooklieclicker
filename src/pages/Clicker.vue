@@ -83,10 +83,5 @@ export default {
     },
     components: { MusicPlayer }
 };
-function playound() {
-  var mysound = document.getElementById("sfx");
-  mysound.autoplay = 'true';
-  mysound.load();
-}
 
 </script>

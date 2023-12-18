@@ -2,19 +2,17 @@
   <div class="row">
     <div class="col">
       <h1>GONG CLICKER</h1>
-      <audio controls>
-        <source :src="import ('../assets/music.mp3')" type="audio/mpeg" controls autoplay>
-        Your browser does not support the audio tag.
-      </audio>
+      <audio id="audio" autoplay loop  controls :src="music"></audio>
       <img src="https://cdn.dribbble.com/users/1226119/screenshots/6271830/____400300.gif" class="img-fluid" alt="">
     </div>
     <div class="col">
       <h3 class="text-center">Hits {{ cookies }}</h3>
       <img src="https://www.thegongshop.com/cdn/shop/products/the-gong-shop-12-chinese-chau-gong-set-with-stand-and-mallet-cg12-p0561-28137294200906.png?v=1628019965" class="img-fluid" @click="cookies++">
     </div>
-    <div id="click" class="col">
-      <button v-for="(upgrade, name) in upgrades"
-        v-on:click="play" type="button"
+    <div class="col ">
+      <audio id="sfx"><source :src="music"></audio>
+      <button id="button" v-for="(upgrade, name) in upgrades"
+        onclick='playSound(null)'
         class="btn btn-outline-primary py-3 mt-3"
         :disabled="cookies<upgrade.price"
         @click="buyUpgrade(upgrade)">
@@ -22,6 +20,7 @@
         {{ upgrade.price }} hits ({{upgrade.cps}} hits per second)
         {{ upgrade.count }}
       </button>
+      <div id="sound"></div>
     </div>
   </div>
 </template>
@@ -66,10 +65,10 @@ export default {
             cookies: 0,
             upgrades: {
                 mallet: { price: 10, cps: 0.1, count: 0 },
-                dancers: { price: 100, cps: 1, count: 0 },
-                titanium_mallet: { price: 1000, cps: 10, count: 0 },
-                dragon: { price: 10000, cps: 100, count: 0 },
-                temple: { price: 100000, cps: 1000, count: 0 },
+                dancers: { price: 10, cps: 10, count: 0 },
+                titanium_mallet: { price: 100, cps: 100, count: 0 },
+                dragon: { price: 1000, cps: 1000, count: 0 },
+                temple: { price: 10000, cps: 10000, count: 0 },
             }
         };
     },
@@ -84,4 +83,10 @@ export default {
     },
     components: { MusicPlayer }
 };
+function playound() {
+  var mysound = document.getElementById("sfx");
+  mysound.autoplay = 'true';
+  mysound.load();
+}
+
 </script>
